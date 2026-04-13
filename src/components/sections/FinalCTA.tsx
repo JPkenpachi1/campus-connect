@@ -21,7 +21,7 @@ export default function FinalCTA() {
 
       <div className="relative mx-auto max-w-2xl text-center">
         {/* Badge */}
-        <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600">
+        <span className="mb-5 inline-flex items-center gap-2    px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600">
           <Rocket className="h-3.5 w-3.5" />
           Limited Beta Spots — Be First
         </span>
