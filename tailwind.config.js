@@ -4,12 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#4F46E5",
+        primary: "#221e22",
         "primary-dark": "#3730A3",
         dark: "#0A0A1A",
+        brand: "#221e22", // ← added color
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Syne", "Inter", "sans-serif"],
+        syne: ["Syne", "sans-serif"],
       },
     },
   },

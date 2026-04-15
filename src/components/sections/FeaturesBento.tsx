@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";   // ← import ScrollTrigger
 import {
   Clock3,
   QrCode,
@@ -49,7 +49,6 @@ function FeatureItem({
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 shadow-lg shadow-blue-600/20">
         <Icon className="h-5 w-5 text-white" />
       </div>
-
       <div>
         <h4 className="text-sm font-bold text-slate-950">{title}</h4>
         <p className="mt-1 text-xs leading-5 text-slate-500">{desc}</p>
@@ -65,6 +64,15 @@ export default function FeaturesBento() {
     () => {
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
+
+        // ✅ This fires the entire timeline only when the section scrolls into view
+        scrollTrigger: {
+          trigger: sectionRef.current,  // watch this element
+          start: "top 80%",             // fire when top of section hits 80% of viewport
+          end: "bottom 20%",            // end zone
+          toggleActions: "play none none none", // play once, don't reverse
+          // once: true is achieved by toggleActions: "play none none none"
+        },
       });
 
       tl.fromTo(
@@ -109,10 +117,12 @@ export default function FeaturesBento() {
           "-=0.7"
         );
 
-      // Continuous float animation
-      
+      // Cleanup ScrollTrigger on unmount
+      return () => {
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+      };
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
@@ -137,15 +147,9 @@ export default function FeaturesBento() {
               <GraduationCap className="h-5 w-5 text-blue-600" />
               <h3 className="text-lg font-bold text-slate-950">For Students</h3>
             </div>
-
             <div className="space-y-4">
               {STUDENT_FEATURES.map((item) => (
-                <FeatureItem
-                  key={item.title}
-                  icon={item.icon}
-                  title={item.title}
-                  desc={item.desc}
-                />
+                <FeatureItem key={item.title} icon={item.icon} title={item.title} desc={item.desc} />
               ))}
             </div>
           </div>
@@ -153,7 +157,6 @@ export default function FeaturesBento() {
           {/* Center */}
           <div className="relative flex items-center justify-center py-8 lg:py-0">
             <div className="mockup-glow absolute inset-x-0 top-1/2 h-72 -translate-y-1/2 rounded-full bg-blue-100/50 blur-3xl" />
-
             <div className="mockup-float relative flex items-center gap-5">
               <div className="mockup-android translate-y-6 scale-[0.92]">
                 <PhoneMockup device="android" theme="blue" screen="dashboard" />
@@ -170,15 +173,9 @@ export default function FeaturesBento() {
               <Store className="h-5 w-5 text-blue-600" />
               <h3 className="text-lg font-bold text-slate-950">For Vendors</h3>
             </div>
-
             <div className="space-y-4">
               {VENDOR_FEATURES.map((item) => (
-                <FeatureItem
-                  key={item.title}
-                  icon={item.icon}
-                  title={item.title}
-                  desc={item.desc}
-                />
+                <FeatureItem key={item.title} icon={item.icon} title={item.title} desc={item.desc} />
               ))}
             </div>
           </div>

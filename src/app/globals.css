@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --primary: #4F46E5;
+  --primary: #221e22;
 }
 
 html {
@@ -13,5 +13,5 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Syne", sans-serif;
 }

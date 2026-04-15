@@ -4,24 +4,33 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "PlutoPay – Revolution in Fintech",
-  description: "Corporate cards for business owners, finance teams & CFOs.",
+  title: "Campus Connect",
+  description: "Campus Connect helps students, clubs, and campus communities stay connected and informed.",
   openGraph: {
-    title: "PlutoPay",
-    description: "Unlimited corporate cards to control inline & offline expenses.",
-    url: "https://plutopay.com",
-    siteName: "PlutoPay",
+    title: "Campus Connect",
+    description: "A platform for students, clubs, and campus communities to connect and collaborate.",
+    url: "https://campusconnect.com",
+    siteName: "Campus Connect",
     type: "website",
+  },
+  icons: {
+    icon: "/CampusConnect.png",
+    shortcut: "/CampusConnect.png",
+    apple: "/CampusConnect.png",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="bg-white text-gray-900 antialiased">
-        <Navbar />
+        
         <main>{children}</main>
-        <Footer />
+     
       </body>
     </html>
   );

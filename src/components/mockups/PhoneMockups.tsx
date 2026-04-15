@@ -303,7 +303,7 @@ export function DashboardScreen({ isBlue }: ScreenProps) {
               Block C Canteen
             </small>
             <b style={{ fontFamily: "'Syne', sans-serif", color: isBlue ? "white" : "#0f1535", fontSize: 14, fontWeight: 700 }}>
-              Hey Jai 👋
+              Hey Kenny 👋
             </b>
           </div>
           <div style={{ position: "relative" }}>
